@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <title>StánekOS</title>
+    <style>
+      /* Skryj scrollbary - kiosek je dotykový */
+      html, body { overscroll-behavior: none; overflow: hidden; -webkit-user-select: none; user-select: none; }
+      body { margin: 0; background: #0f0f1e; }
+      /* Zabraň pinch-zoom */
+      * { touch-action: manipulation; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

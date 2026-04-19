@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   Kiosk styly - optimalizováno pro seniory a dotykový monitor
+   ============================================================================
+   Principy:
+   - Velké fonty (min 20px, hlavní text 24-32px)
+   - Velké tlačítka (min 100px výška)
+   - Vysoký kontrast (tmavé pozadí, světlý text)
+   - Jednoduchá navigace (max 3 volby na obrazovku)
+   - Jasné stavy (focus, hover, active)
+   - Žádné malé ikony nebo tooltipy
+*/
+
+@layer base {
+  html {
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  body {
+    @apply bg-midnight text-cream;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 { @apply text-kiosk-2xl font-bold; }
+  h2 { @apply text-kiosk-xl font-semibold; }
+  h3 { @apply text-kiosk-lg font-semibold; }
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  /* Hlavní tlačítko - velké, zlaté, kontrastní */
+  .btn-primary {
+    @apply bg-gold text-midnight font-bold text-kiosk-lg
+           px-12 py-8 rounded-2xl shadow-xl
+           active:bg-goldHi active:scale-95
+           transition-transform duration-100
+           min-h-[100px] min-w-[200px];
+  }
+
+  /* Sekundární tlačítko - outline */
+  .btn-secondary {
+    @apply bg-panel text-cream font-semibold text-kiosk-base
+           px-10 py-6 rounded-2xl border-2 border-gold
+           active:bg-gold/20 active:scale-95
+           transition-all duration-100
+           min-h-[80px];
+  }
+
+  /* Nebezpečné tlačítko (zrušit) */
+  .btn-danger {
+    @apply bg-danger text-white font-bold text-kiosk-base
+           px-8 py-6 rounded-2xl
+           active:scale-95 transition-transform
+           min-h-[80px];
+  }
+
+  /* Plus/minus tlačítko pro množství */
+  .btn-qty {
+    @apply bg-gold text-midnight font-bold text-kiosk-xl
+           w-20 h-20 rounded-full flex items-center justify-center
+           active:bg-goldHi active:scale-90 transition-transform;
+  }
+
+  /* Panel (karta) */
+  .panel {
+    @apply bg-panel rounded-3xl shadow-2xl;
+  }
+}
+
+/* Animace */
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 165, 116, 0.7); }
+  50% { box-shadow: 0 0 0 20px rgba(212, 165, 116, 0); }
+}
+.pulse-gold { animation: pulse-gold 2s infinite; }
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fade-in 0.3s ease-out; }
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin-slow { animation: spin-slow 2s linear infinite; }

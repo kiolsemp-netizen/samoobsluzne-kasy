@@ -1,0 +1,13 @@
+{
+  "name": "stanek-os-agent",
+  "version": "1.0.0",
+  "main": "inventoryAgent.js",
+  "scripts": {
+    "start": "node inventoryAgent.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "node-telegram-bot-api": "^0.64.0",
+    "pg": "^8.11.3"
+  }
+}
